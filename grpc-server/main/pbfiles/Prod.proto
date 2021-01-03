@@ -1,0 +1,23 @@
+// 指定protobuf的版本，proto3是最新的语法版本
+syntax = "proto3";
+package service;
+import "google/api/annotations.proto";
+
+message ProdRequest{
+  int32 prod_id = 1;  // 传入的商品id
+}
+
+message ProdResponse{
+  int32 prod_stock = 1;// 商品库存
+}
+
+
+service ProdService{
+  rpc GetProdStock (ProdRequest) returns (ProdResponse){
+    option (google.api.http) = {
+      get: "/v1/prod/{prod_id}"
+    };
+  };
+
+}
+

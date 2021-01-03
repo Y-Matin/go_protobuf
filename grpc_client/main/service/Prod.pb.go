@@ -4,7 +4,7 @@
 // versions:
 // 	protoc-gen-go v1.23.0
 // 	protoc        v3.14.0
-// source: Prod.proto
+// source: Prod.pbfiles
 
 package service
 
@@ -297,5 +297,5 @@ var _ProdService_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "Prod.proto",
+	Metadata: "Prod.pbfiles",
 }
