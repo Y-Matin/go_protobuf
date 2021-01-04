@@ -5,11 +5,13 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"fmt"
+	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"io/ioutil"
 	"log"
 	"main/service"
+	"time"
 )
 
 func main() {
@@ -49,5 +51,16 @@ func main() {
 	fmt.Print(info)
 
 	// 4. 使用时间格式（timestamp）
+	t := timestamp.Timestamp{Seconds: time.Now().Unix()}
+	orderClient := service.NewOrderServiceClient(conn)
+	status, err := orderClient.GetOderStatus(context.Background(), &service.OrderMain{
+		OrderId:    1,
+		OrderPrice: 0,
+		CreateTime: &t,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Print(status)
 
 }

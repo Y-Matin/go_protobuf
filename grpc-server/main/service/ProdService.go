@@ -1,6 +1,9 @@
 package service
 
-import "context"
+import (
+	"context"
+	"fmt"
+)
 
 type ProdService struct {
 }
@@ -31,4 +34,10 @@ func (p *ProdService) QueryProdStock(ctx context.Context, q *QueryProd) (*ProdLi
 
 func (p ProdService) GetProdInfo(ctx context.Context, in *ProdRequest) (*ProdModel, error) {
 	return &ProdModel{ProdId: in.ProdId, ProdName: "苹果", ProdPrice: 12.3}, nil
+}
+
+func (p *ProdService) GetOderStatus(ctx context.Context, order *OrderMain) (*OrderStatus, error) {
+	fmt.Print(order)
+	return &OrderStatus{OrderMsg: "已完成", OrderStatus: "finish"}, nil
+
 }
