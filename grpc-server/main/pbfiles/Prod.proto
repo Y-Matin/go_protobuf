@@ -2,7 +2,7 @@
 syntax = "proto3";
 package service;
 import "google/api/annotations.proto";
-
+import "Models.proto";
 enum ProdAreas{
   A=0;  // 默认值。
   B=1;
@@ -36,6 +36,7 @@ service ProdService{
   };
 
   rpc QueryProdStock(QueryProd) returns (ProdList);
+  rpc GetProdInfo(ProdRequest) returns (ProdModel);
 }
 
 

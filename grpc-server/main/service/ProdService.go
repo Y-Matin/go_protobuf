@@ -28,3 +28,7 @@ func (p *ProdService) QueryProdStock(ctx context.Context, q *QueryProd) (*ProdLi
 	list := ProdList{Prods: stocks}
 	return &list, nil
 }
+
+func (p ProdService) GetProdInfo(ctx context.Context, in *ProdRequest) (*ProdModel, error) {
+	return &ProdModel{ProdId: in.ProdId, ProdName: "苹果", ProdPrice: 12.3}, nil
+}

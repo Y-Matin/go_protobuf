@@ -30,12 +30,12 @@ func main() {
 	defer conn.Close()
 
 	client := service.NewProdServiceClient(conn)
-	//1.根据id 获取对应商品的 库存
-	prodResponse, err := client.GetProdStock(context.Background(), &service.ProdRequest{ProdId: 10, Areas: service.ProdAreas_C})
+	/*	  //1.根据id 获取对应商品的 库存
+	prodResponse, err := client.GetProdStock(context.Background(), &service.ProdRequest{ProdId: 10,Areas: service.ProdAreas_C})
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print(prodResponse.ProdStock)
+	fmt.Print(prodResponse.ProdStock)*/
 
 	/*//  2.查询 固定数目的商品，返回一组商品的库存
 	prodList, err := client.QueryProdStock(context.Background(), &service.QueryProd{Size: 1})
@@ -43,4 +43,8 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Print(prodList)*/
+
+	// 3. 根据某个id，查询商品具体信息
+	info, err := client.GetProdInfo(context.Background(), &service.ProdRequest{ProdId: 10})
+	fmt.Print(info)
 }
