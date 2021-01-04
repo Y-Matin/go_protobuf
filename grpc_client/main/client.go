@@ -13,13 +13,6 @@ import (
 )
 
 func main() {
-
-	// 只有 服务端证书
-	/*	creds, err := credentials.NewClientTLSFromFile("keys/server.crt", "yeds")
-		if err != nil {
-			log.Fatal(err)
-		}*/
-
 	// 服务端、客户端证书都有
 	cert, _ := tls.LoadX509KeyPair("cert/client.pem", "cert/client.key")
 	certPool := x509.NewCertPool()
@@ -38,10 +31,17 @@ func main() {
 	defer conn.Close()
 
 	client := service.NewProdServiceClient(conn)
+	/*  根据id 获取对应商品的 库存
 	prodResponse, err := client.GetProdStock(context.Background(), &service.ProdRequest{ProdId: 10})
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Print(prodResponse.ProdStock)
-
+	*/
+	//  查询 固定数目的商品，返回一组商品的库存
+	prodList, err := client.QueryProdStock(context.Background(), &service.QueryProd{Size: 1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Print(prodList)
 }

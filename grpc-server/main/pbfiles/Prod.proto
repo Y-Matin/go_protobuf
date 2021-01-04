@@ -11,6 +11,15 @@ message ProdResponse{
   int32 prod_stock = 1;// 商品库存
 }
 
+message QueryProd{
+  int32 size =1;
+}
+
+message ProdList{
+//  repeated ：重复的， 表示多个，可等同于go中的silence或java中的list
+  repeated ProdResponse prods=1;
+}
+
 
 service ProdService{
   rpc GetProdStock (ProdRequest) returns (ProdResponse){
@@ -19,5 +28,8 @@ service ProdService{
     };
   };
 
+  rpc QueryProdStock(QueryProd) returns (ProdList);
 }
+
+
 
