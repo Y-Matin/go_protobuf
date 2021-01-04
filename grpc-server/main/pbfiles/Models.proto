@@ -1,10 +1,17 @@
 // 指定protobuf的版本，proto3是最新的语法版本
 syntax = "proto3";
 package service;
+import "google/protobuf/timestamp.proto";
 
 // prod pojo
 message ProdModel{
   int32 prod_id =1;
   string prod_name =2;
   float prod_price =3;
+}
+
+message OrderMain{
+  int32 order_id=1;
+  float orderPrice=2;
+  google.protobuf.Timestamp createTime = 3;
 }

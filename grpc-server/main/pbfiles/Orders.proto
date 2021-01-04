@@ -1,0 +1,12 @@
+// 指定protobuf的版本，proto3是最新的语法版本
+syntax = "proto3";
+package service;
+import "Models.proto";
+message orderStatus{
+  string orderStatus=1;
+  string orderMsg =2;
+}
+
+service OrderService{
+  rpc GetOderStatus(OrderMain) returns (orderStatus);
+}

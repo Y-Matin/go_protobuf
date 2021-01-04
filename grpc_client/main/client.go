@@ -44,7 +44,10 @@ func main() {
 	}
 	fmt.Print(prodList)*/
 
-	// 3. 根据某个id，查询商品具体信息
+	// 3. 根据某个id，查询商品具体信息（model）
 	info, err := client.GetProdInfo(context.Background(), &service.ProdRequest{ProdId: 10})
 	fmt.Print(info)
+
+	// 4. 使用时间格式（timestamp）
+
 }
