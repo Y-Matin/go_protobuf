@@ -5,8 +5,16 @@ import "context"
 type ProdService struct {
 }
 
-func (p *ProdService) GetProdStock(context.Context, *ProdRequest) (*ProdResponse, error) {
-	return &ProdResponse{ProdStock: 20}, nil
+func (p *ProdService) GetProdStock(c context.Context, req *ProdRequest) (*ProdResponse, error) {
+	switch req.Areas {
+	case ProdAreas_A:
+		return &ProdResponse{ProdStock: 20}, nil
+	case ProdAreas_B:
+		return &ProdResponse{ProdStock: 30}, nil
+	case ProdAreas_C:
+		return &ProdResponse{ProdStock: 40}, nil
+	}
+	return nil, nil
 }
 
 func (p *ProdService) QueryProdStock(ctx context.Context, q *QueryProd) (*ProdList, error) {
