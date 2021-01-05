@@ -2,11 +2,21 @@
 syntax = "proto3";
 package service;
 import "Models.proto";
+import "google/api/annotations.proto";
 message orderStatus{
   string orderStatus=1;
   string orderMsg =2;
 }
 
+message OrderRequest{
+  OrderMain order_main=1;
+}
+
 service OrderService{
-  rpc GetOderStatus(OrderMain) returns (orderStatus);
+  rpc GetOderStatus(OrderRequest) returns (orderStatus){
+    option (google.api.http) = {
+      post :"/v1/orders",
+      body :"order_main"  // 与 OrderRequest中的成员字段名一致
+    };
+  };
 }

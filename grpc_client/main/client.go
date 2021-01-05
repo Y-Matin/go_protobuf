@@ -48,19 +48,21 @@ func main() {
 
 	// 3. 根据某个id，查询商品具体信息（model）
 	info, err := client.GetProdInfo(context.Background(), &service.ProdRequest{ProdId: 10})
-	fmt.Print(info)
+	fmt.Println(info)
 
 	// 4. 使用时间格式（timestamp）
 	t := timestamp.Timestamp{Seconds: time.Now().Unix()}
 	orderClient := service.NewOrderServiceClient(conn)
-	status, err := orderClient.GetOderStatus(context.Background(), &service.OrderMain{
-		OrderId:    1,
-		OrderPrice: 0,
-		CreateTime: &t,
-	})
+	status, err := orderClient.GetOderStatus(context.Background(), &service.OrderRequest{
+		OrderMain: &service.OrderMain{
+			OrderId:    1,
+			OrderPrice: 0,
+			CreateTime: &t,
+		},
+	},
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Print(status)
-
+	fmt.Println(status)
 }

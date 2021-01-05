@@ -36,8 +36,8 @@ func (p ProdService) GetProdInfo(ctx context.Context, in *ProdRequest) (*ProdMod
 	return &ProdModel{ProdId: in.ProdId, ProdName: "苹果", ProdPrice: 12.3}, nil
 }
 
-func (p *ProdService) GetOderStatus(ctx context.Context, order *OrderMain) (*OrderStatus, error) {
-	fmt.Print(order)
+func (p *ProdService) GetOderStatus(ctx context.Context, order *OrderRequest) (*OrderStatus, error) {
+	fmt.Print(order.OrderMain)
 	return &OrderStatus{OrderMsg: "已完成", OrderStatus: "finish"}, nil
 
 }
