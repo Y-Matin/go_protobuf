@@ -101,7 +101,7 @@ func local_request_ProdService_GetProdStock_0(ctx context.Context, marshaler run
 
 }
 
-// RegisterProdServiceHandlerServer registers the http handlers for service ProdService to "mux".
+// RegisterProdServiceHandlerServer registers the http handlers for service ProtoServiceImpl to "mux".
 // UnaryRPC     :call ProdServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterProdServiceHandlerFromEndpoint instead.
@@ -113,7 +113,7 @@ func RegisterProdServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/service.ProdService/GetProdStock")
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/service.ProtoServiceImpl/GetProdStock")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -158,13 +158,13 @@ func RegisterProdServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.Se
 	return RegisterProdServiceHandler(ctx, mux, conn)
 }
 
-// RegisterProdServiceHandler registers the http handlers for service ProdService to "mux".
+// RegisterProdServiceHandler registers the http handlers for service ProtoServiceImpl to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterProdServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
 	return RegisterProdServiceHandlerClient(ctx, mux, NewProdServiceClient(conn))
 }
 
-// RegisterProdServiceHandlerClient registers the http handlers for service ProdService
+// RegisterProdServiceHandlerClient registers the http handlers for service ProtoServiceImpl
 // to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "ProdServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "ProdServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
@@ -175,7 +175,7 @@ func RegisterProdServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/service.ProdService/GetProdStock")
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/service.ProtoServiceImpl/GetProdStock")
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

@@ -14,4 +14,20 @@ message OrderMain{
   int32 order_id=1;
   float orderPrice=2;
   google.protobuf.Timestamp createTime = 3;
+  int32 user_id=4;
+//  嵌套 子订单
+  repeated OrderDetail detail =5;
+}
+
+message OrderDetail{
+  int32 order_id=1;
+  int32 detail_id =2;
+  int32 prod_id=3;
+  int32 prod_num=5;
+}
+
+// 用户模型
+message UserInfo{
+  int32 userId =1;
+  int32 userScore=2;
 }

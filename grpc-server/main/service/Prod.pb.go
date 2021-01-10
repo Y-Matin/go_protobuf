@@ -343,12 +343,12 @@ var file_Prod_proto_goTypes = []interface{}{
 var file_Prod_proto_depIdxs = []int32{
 	0, // 0: service.ProdRequest.areas:type_name -> service.ProdAreas
 	2, // 1: service.ProdList.prods:type_name -> service.ProdResponse
-	1, // 2: service.ProdService.GetProdStock:input_type -> service.ProdRequest
-	3, // 3: service.ProdService.QueryProdStock:input_type -> service.QueryProd
-	1, // 4: service.ProdService.GetProdInfo:input_type -> service.ProdRequest
-	2, // 5: service.ProdService.GetProdStock:output_type -> service.ProdResponse
-	4, // 6: service.ProdService.QueryProdStock:output_type -> service.ProdList
-	5, // 7: service.ProdService.GetProdInfo:output_type -> service.ProdModel
+	1, // 2: service.ProtoServiceImpl.GetProdStock:input_type -> service.ProdRequest
+	3, // 3: service.ProtoServiceImpl.QueryProdStock:input_type -> service.QueryProd
+	1, // 4: service.ProtoServiceImpl.GetProdInfo:input_type -> service.ProdRequest
+	2, // 5: service.ProtoServiceImpl.GetProdStock:output_type -> service.ProdResponse
+	4, // 6: service.ProtoServiceImpl.QueryProdStock:output_type -> service.ProdList
+	5, // 7: service.ProtoServiceImpl.GetProdInfo:output_type -> service.ProdModel
 	5, // [5:8] is the sub-list for method output_type
 	2, // [2:5] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -441,7 +441,7 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// ProdServiceClient is the client API for ProdService service.
+// ProdServiceClient is the client API for ProtoServiceImpl service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ProdServiceClient interface {
@@ -460,7 +460,7 @@ func NewProdServiceClient(cc grpc.ClientConnInterface) ProdServiceClient {
 
 func (c *prodServiceClient) GetProdStock(ctx context.Context, in *ProdRequest, opts ...grpc.CallOption) (*ProdResponse, error) {
 	out := new(ProdResponse)
-	err := c.cc.Invoke(ctx, "/service.ProdService/GetProdStock", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/service.ProtoServiceImpl/GetProdStock", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -469,7 +469,7 @@ func (c *prodServiceClient) GetProdStock(ctx context.Context, in *ProdRequest, o
 
 func (c *prodServiceClient) QueryProdStock(ctx context.Context, in *QueryProd, opts ...grpc.CallOption) (*ProdList, error) {
 	out := new(ProdList)
-	err := c.cc.Invoke(ctx, "/service.ProdService/QueryProdStock", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/service.ProtoServiceImpl/QueryProdStock", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -478,14 +478,14 @@ func (c *prodServiceClient) QueryProdStock(ctx context.Context, in *QueryProd, o
 
 func (c *prodServiceClient) GetProdInfo(ctx context.Context, in *ProdRequest, opts ...grpc.CallOption) (*ProdModel, error) {
 	out := new(ProdModel)
-	err := c.cc.Invoke(ctx, "/service.ProdService/GetProdInfo", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/service.ProtoServiceImpl/GetProdInfo", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// ProdServiceServer is the server API for ProdService service.
+// ProdServiceServer is the server API for ProtoServiceImpl service.
 type ProdServiceServer interface {
 	GetProdStock(context.Context, *ProdRequest) (*ProdResponse, error)
 	QueryProdStock(context.Context, *QueryProd) (*ProdList, error)
@@ -520,7 +520,7 @@ func _ProdService_GetProdStock_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/service.ProdService/GetProdStock",
+		FullMethod: "/service.ProtoServiceImpl/GetProdStock",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProdServiceServer).GetProdStock(ctx, req.(*ProdRequest))
@@ -538,7 +538,7 @@ func _ProdService_QueryProdStock_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/service.ProdService/QueryProdStock",
+		FullMethod: "/service.ProtoServiceImpl/QueryProdStock",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProdServiceServer).QueryProdStock(ctx, req.(*QueryProd))
@@ -556,7 +556,7 @@ func _ProdService_GetProdInfo_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/service.ProdService/GetProdInfo",
+		FullMethod: "/service.ProtoServiceImpl/GetProdInfo",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProdServiceServer).GetProdInfo(ctx, req.(*ProdRequest))
@@ -565,7 +565,7 @@ func _ProdService_GetProdInfo_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 var _ProdService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "service.ProdService",
+	ServiceName: "service.ProtoServiceImpl",
 	HandlerType: (*ProdServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

@@ -1,0 +1,22 @@
+// 指定protobuf的版本，proto3是最新的语法版本
+syntax = "proto3";
+package service;
+import "Models.proto";
+
+message UserScoreRequest{
+  repeated UserInfo users=1;
+}
+message UserScoreResponse{
+  repeated UserInfo users=1;
+}
+
+
+service UserService{
+  rpc getUserScore(UserScoreRequest) returns (UserScoreResponse);
+//   服务端流
+  rpc getUserScoreByServerStream(UserScoreRequest) returns ( stream UserScoreResponse);
+//   客户端流
+  rpc getUserScoreByClientStream( stream UserScoreRequest) returns (  UserScoreResponse);
+//  双向流
+  rpc getUserScoreByBothStream( stream UserScoreRequest) returns ( stream UserScoreResponse);
+}
